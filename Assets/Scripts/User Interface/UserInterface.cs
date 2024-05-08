@@ -21,7 +21,6 @@ public class UserInterface : MonoBehaviour
     public Toggle toggleSpawner;
     [SerializeField] private bool turnUI;
     [SerializeField] private bool keyPressed = true;
-
     // Start is called before the first frame update
 
     void Start()

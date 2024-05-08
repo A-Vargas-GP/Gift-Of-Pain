@@ -11,6 +11,7 @@ TagManager:
   - Break
   - SantaHand
   - Gift
+  - MainMenu
   layers:
   - Default
   - TransparentFX

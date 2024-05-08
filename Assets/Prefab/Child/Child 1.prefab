@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 5042319102147781828}
   - component: {fileID: 8015806123038248543}
   - component: {fileID: -1958869072378836175}
+  - component: {fileID: 3874750603616644876}
   m_Layer: 6
   m_Name: Child 1
   m_TagString: Child
@@ -206,3 +207,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 11400000, guid: 5c7c8ff0cf65943eebf5177371c2832d, type: 2}
   santa: {fileID: 11400000, guid: 7bb16c2ad80c34a95a1616c7e27affa1, type: 2}
+--- !u!114 &3874750603616644876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042319102147781833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb82b9a4866a5e4bbad7564c9df5528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightClass: 0
+  slowFactor: 1.25
+  dmgFactor: 1

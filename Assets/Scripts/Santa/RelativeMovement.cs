@@ -11,7 +11,9 @@ public class RelativeMovement : MonoBehaviour
 
     [Header("Santa Movement Values")]
     [Tooltip("Values")]
-    public float moveSpeed = 4.5f;
+    public bool canMove;
+    public float baseSpeed = 4.5f;
+    private float moveSpeed;
     public float jumpSpeed = 7.0f;
     public float gravity = -9.8f;
     public float terminalVelocity = -10.0f;
@@ -31,18 +33,28 @@ public class RelativeMovement : MonoBehaviour
         charController = GetComponent<CharacterController>();
 
         vertSpeed = minFall;
+        moveSpeed = baseSpeed;
+        santaAnimator.SetTrigger("Land");
+        santaAnimator.SetBool("Walking", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovingSanta();
-        JumpingSanta();
 
-        movement.y = vertSpeed; //Change up/down
+        if (canMove)
+        {
+            if (target == null)
+                target = GameObject.FindWithTag("MainCamera").transform;
+            MovingSanta();
+            JumpingSanta();
 
-        movement *= Time.deltaTime;
-        charController.Move(movement);
+            movement.y = vertSpeed; //Change up/down
+
+            movement *= Time.deltaTime;
+            charController.Move(movement);
+        }
+
     }
 
     void MovingSanta()
@@ -99,5 +111,23 @@ public class RelativeMovement : MonoBehaviour
                 vertSpeed = terminalVelocity;
             }
         }
+    }
+
+    //Multiplies the move speed with whatever value is put in
+    //can be used to stack move speed changes
+    public void ChangeMoveSpeed(float modifier)
+    {
+        moveSpeed = moveSpeed * modifier;
+    }
+
+    //Resets movespeed back to it's original value (baseSpeed)
+    public void ResetSpeed()
+    {
+        moveSpeed = baseSpeed;
+    }
+    public void GameStart()
+    { 
+        
+        canMove = true;
     }
 }

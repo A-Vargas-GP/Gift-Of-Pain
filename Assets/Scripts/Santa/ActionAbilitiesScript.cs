@@ -22,6 +22,12 @@ public class ActionAbilitiesScript : MonoBehaviour
     private GameObject heldObj; //object which we pick up
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
+    private  float objSpe;
+    private Enums.ObjectWeight objClass;
+    private float objDmg;
+    public RelativeMovement RelMove;
+ 
+
 
     // [Header("Punching Ability")]
     // [Tooltip("Punching Positions")]
@@ -32,7 +38,7 @@ public class ActionAbilitiesScript : MonoBehaviour
     //MouseLookScript mouseLookScript;
     void Start()
     {
-
+    
         //mouseLookScript = player.GetComponent<MouseLookScript>();
     }
 
@@ -112,6 +118,11 @@ public class ActionAbilitiesScript : MonoBehaviour
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), Santa31.GetComponent<Collider>(), true);
+            //get object's stats
+            objSpe = heldObj.GetComponent<ObjectStats>().slowFactor;
+            objDmg = heldObj.GetComponent<ObjectStats>().dmgFactor;
+            objClass = heldObj.GetComponent<ObjectStats>().weightClass;
+            RelMove.ChangeMoveSpeed(objSpe);
         }
     }
 
@@ -123,8 +134,9 @@ public class ActionAbilitiesScript : MonoBehaviour
         heldObj.transform.parent = null; //unparent object
         heldObj = null; //undefine game object
         
-        //AnimationReset
+        //AnimationReset & speed Reset
         santaAnimator.SetBool("Holding", false);
+        RelMove.ResetSpeed();
     }
 
     void MoveObject()
@@ -141,9 +153,10 @@ public class ActionAbilitiesScript : MonoBehaviour
         heldObj.transform.parent = null;
         heldObjRb.AddForce(transform.forward * throwForce);
         heldObj = null;
-        
-        //AnimationReset
+
+        //AnimationReset & speed Reset
         santaAnimator.SetBool("Holding", false);
+        RelMove.ResetSpeed();
     }
 
     void StopClipping() //function only called when dropping/throwing

@@ -31,6 +31,8 @@ public class OrbitCamera : MonoBehaviour
         zoomLevel = 7.0f;
         //Not used, but keeps track of the distance for future purposes
         //_offset = target.position - transform.position;
+
+        target = GameObject.FindWithTag("Santa").transform;
     }
 
     void Update()
