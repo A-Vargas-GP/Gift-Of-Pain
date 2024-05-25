@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 37315321d942747c7ba6b768b264f34a
-=======
-guid: c866f07000dab4f46bf7418dbafcaeff
->>>>>>> 83b2d3e306868f3f7d7d7a3da34c5ba4e039efdc
+guid: 7dfee84a7889f4b1eb37428a4a712951
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,33 +90,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-<<<<<<< HEAD
-=======
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
->>>>>>> 83b2d3e306868f3f7d7d7a3da34c5ba4e039efdc
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0

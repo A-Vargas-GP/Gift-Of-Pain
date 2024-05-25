@@ -71,5 +71,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+<<<<<<< HEAD
 # Project Specific Items
 
+=======
+# Project Specific Items
+>>>>>>> 83b2d3e306868f3f7d7d7a3da34c5ba4e039efdc
