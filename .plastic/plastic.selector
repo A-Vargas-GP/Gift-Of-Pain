@@ -1,4 +1,4 @@
 repository "Gift of Pain@Alumni_Game_Dev@cloud"
   path "/"
-    smartbranch "/main" changeset "145"             
-     
+    br "/main"
+    co "/main"
