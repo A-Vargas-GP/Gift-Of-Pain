@@ -1,0 +1,20 @@
+[
+  {
+    "MountId": "56e62dd7-241f-41e9-8c6b-dd4ca4513e62",
+    "AncestorCsetIds": [
+      149
+    ],
+    "SourceCsetId": 151,
+    "DestinationCsetId": 149,
+    "FileConflicts": [
+      {
+        "Path": "/.gitignore",
+        "ItemId": 1131,
+        "ParentItemId": 2,
+        "BaseRevId": 1119,
+        "SourceRevId": 6965,
+        "DestinationRevId": 1119
+      }
+    ]
+  }
+]
