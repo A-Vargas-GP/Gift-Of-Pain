@@ -9,7 +9,12 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject childPrefab;
     private GameObject child;
 
-    public bool Spawning;
+    [Header("Child Spawn Selection")]
+    [Tooltip("Enable Child Spawning")]
+    public bool enableSpawn;
+
+    [Header("Child Object Stats")]
+    [Tooltip("Child UI Script")]
     public PlayerSettingsScriptableObject user_interface;
     // Start is called before the first frame update
     void Start()
@@ -21,14 +26,14 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Spawning = user_interface.enemySpawning;
+        enableSpawn = user_interface.enemySpawning;
 
     }
 
     //Spawns Child from Door
     void ChildSpawn()
     {
-        if (Spawning)
+        if (enableSpawn)
         {
             child = Instantiate(childPrefab) as GameObject;
             child.transform.position = this.transform.position + new Vector3(2, -1, 0);
