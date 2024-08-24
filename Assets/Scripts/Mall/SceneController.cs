@@ -16,6 +16,17 @@ public class SceneController : MonoBehaviour
     [Header("Child Object Stats")]
     [Tooltip("Child UI Script")]
     public PlayerSettingsScriptableObject user_interface;
+
+    [Header("Gift Textures")]
+    [Tooltip("List of Textures")]
+    public List<Texture> giftTextures = new List<Texture>();
+    private Renderer giftMesh;
+
+    [Header("Prefab Selector")]
+    [Tooltip("Choose the Object")]
+    [SerializeField] private GameObject giftPrefab;
+    private GameObject gift;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +51,27 @@ public class SceneController : MonoBehaviour
 
             float angle = Random.Range(0, 180);
             child.transform.Rotate(0, angle, 0);
+
+            GiftSpawn();
         }
-/*        else
+    /*        
+        else
         {
             Debug.Log("Can't Spawn");
         }
-*/
+    */
+    }
+
+    void GiftSpawn()
+    {
+        Debug.Log("spawning");
+
+        giftMesh = giftPrefab.GetComponent<Renderer>();
+        int listNum = Random.Range(0, giftTextures.Count);
+        giftMesh.sharedMaterial.SetTexture("_BaseColorMap", giftTextures[listNum]);  
+
+        gift = Instantiate(giftPrefab) as GameObject;
+        gift.transform.position = child.transform.TransformPoint(Vector3.forward);
+        gift.transform.rotation = child.transform.rotation;
     }
 }

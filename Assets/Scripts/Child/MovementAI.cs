@@ -17,6 +17,7 @@ public class MovementAI : MonoBehaviour
     [Tooltip("Choose the Object")]
     [SerializeField] private GameObject giftPrefab;
     private GameObject gift;
+    public bool beginGift;
 
     private Rigidbody rb;
 
@@ -57,7 +58,7 @@ public class MovementAI : MonoBehaviour
             Vector3 santaPosition = new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
             transform.LookAt(santaPosition);
             transform.position = Vector3.Slerp(this.transform.position, santaPosition, Time.deltaTime/4.0f);
-            StartCoroutine(ThrowGift());
+            // StartCoroutine(ThrowGift());
         }
     }
 
@@ -88,6 +89,6 @@ public class MovementAI : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.7f);
-        StartCoroutine(ThrowGift());
+        // StartCoroutine(ThrowGift());
     }
 }

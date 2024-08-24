@@ -9,20 +9,11 @@ public class GiftMovement : MonoBehaviour
     public float speed = 4.0f;
     public int damage = 1;
     private Vector3 originalPos;
-
-    [Header("Gift Textures")]
-    [Tooltip("List of Textures")]
-    public List<Texture> giftTextures = new List<Texture>();
-    private Renderer giftMesh;
+    public float launchVelocity = 700f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Components to change the gift color
-        giftMesh = this.GetComponent<Renderer>();
-        int listNum = Random.Range(0, giftTextures.Count);
-        giftMesh.material.SetTexture("_BaseColorMap", giftTextures[listNum]);
-
         //Component for destroying gift based on distance
         originalPos = transform.position;
     }
@@ -30,7 +21,8 @@ public class GiftMovement : MonoBehaviour
     void Update() 
     {   
         //Movement
-        transform.Translate(0, 0, speed * Time.deltaTime);
+        // transform.Translate(0, 0, speed * Time.deltaTime);
+        // this.GetComponent<Rigidbody>().AddRelativeForce(new Vector3 (0, launchVelocity,0));
         DestroyFromDistance();
     }
 
