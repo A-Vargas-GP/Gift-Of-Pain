@@ -1,4 +1,0 @@
-repository "Gift of Pain@Alumni_Game_Dev@cloud"
-  path "/"
-    br "/main"
-    co "/main"
