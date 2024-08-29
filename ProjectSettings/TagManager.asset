@@ -12,6 +12,7 @@ TagManager:
   - SantaHand
   - Gift
   - MainMenu
+  - Floor
   layers:
   - Default
   - TransparentFX

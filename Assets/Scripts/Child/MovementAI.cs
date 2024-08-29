@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MovementAI : MonoBehaviour
 {
@@ -20,27 +21,52 @@ public class MovementAI : MonoBehaviour
     public bool beginGift;
 
     private Rigidbody rb;
+    public NavMeshAgent agent;
+
+    [SerializeField] private Vector3 point;
+
+    public GameObject floor;
+    [SerializeField] private float rangeX; //13
+    [SerializeField] private float rangeZ; //13
+
+    void Awake()
+    {
+        rb = this.gameObject.GetComponent<Rigidbody>();
+        agent = this.gameObject.GetComponent<NavMeshAgent>();
+        player = GameObject.FindWithTag("Santa");
+        floor = GameObject.FindWithTag("Floor");
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Santa");
-
-        rb = this.gameObject.GetComponent<Rigidbody>();
+        rangeX = floor.transform.localScale.x * 4.0f;
+        rangeZ = floor.transform.localScale.z * 4.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         gift = GameObject.FindWithTag("Gift");
-
-        transform.Translate(0, 0, speed * Time.deltaTime);
-
         rb.constraints = RigidbodyConstraints.FreezePositionY;
 
-        FollowSanta();
+        // FollowSanta();
+        Movement();
+        DetectWalls();
+    }
 
-        MovingChild();
+    void Movement()
+    {
+        Vector3 currPos = this.transform.position;
+
+        Debug.Log(agent.pathStatus + ": Path Status");
+
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            point = new Vector3((Random.Range(-rangeX,rangeX) + currPos.x), transform.position.y, (Random.Range(-rangeZ,rangeZ) + currPos.z));
+            agent.SetDestination(point);
+        }
+        // Debug.Log("Point Value: " + point);
     }
 
     //Determine current distance and angle between player and child
@@ -63,7 +89,7 @@ public class MovementAI : MonoBehaviour
     }
 
     //Detect Walls and Rotate
-    void MovingChild()
+    void DetectWalls()
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;

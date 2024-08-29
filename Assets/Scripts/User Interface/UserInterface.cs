@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UserInterface : MonoBehaviour
 {
@@ -13,7 +14,14 @@ public class UserInterface : MonoBehaviour
     [Tooltip("Spawning Reference")]
     public GameObject spawner;
 
-    [Header("UI Appearance")]
+    [Header("Timer - UI Appearance (Active)")]
+    [Tooltip("References")]
+    public TMP_Text timer;
+    [SerializeField] private float time = 400.0f;
+    [SerializeField] private int minutes;
+    [SerializeField] private int timeRemaining;
+
+    [Header("UI Appearance - Inactive")]
     [Tooltip("References")]
     public PlayerSettingsScriptableObject user_interface_scriptable_obj;
     public GameObject canvasUI;
@@ -31,7 +39,21 @@ public class UserInterface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TurnOnUserInterface();
+        TurnOnEscape();
+        timerText();
+    }
+
+    void timerText()
+    {
+        if (time <= 0)
+        {
+            time = 0;
+        }
+        
+        time-=Time.deltaTime;
+        minutes = (int)(time / 60);
+        timeRemaining = (int)(time % 60);
+        timer.text = minutes + ":" + timeRemaining;
     }
 
     void AppearUI()
@@ -48,7 +70,7 @@ public class UserInterface : MonoBehaviour
         }
     }
 
-    void TurnOnUserInterface()
+    void TurnOnEscape()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {            

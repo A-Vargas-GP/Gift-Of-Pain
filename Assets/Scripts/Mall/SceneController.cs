@@ -64,7 +64,7 @@ public class SceneController : MonoBehaviour
 
     void GiftSpawn()
     {
-        Debug.Log("spawning");
+        // Debug.Log("spawning");
 
         giftMesh = giftPrefab.GetComponent<Renderer>();
         int listNum = Random.Range(0, giftTextures.Count);

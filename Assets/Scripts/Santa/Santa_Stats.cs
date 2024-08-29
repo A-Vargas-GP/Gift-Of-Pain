@@ -36,7 +36,7 @@ public class Santa_Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Santa's Health: " + santa.currentHealth);
+        // Debug.Log("Santa's Health: " + santa.currentHealth);
 
         //**Potential Idea: upon dying, maybe have Santa break apart or something along those lines??
         if (santa.currentHealth <= 0)
@@ -76,10 +76,10 @@ public class Santa_Stats : MonoBehaviour
         {
             if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Armature|Punch_R"))
             {
-                Debug.Log("PUNCHING CHILD");
+                // Debug.Log("PUNCHING CHILD");
             }
 
-            Debug.Log("HAND SMACKS CHILD");
+            // Debug.Log("HAND SMACKS CHILD");
         }
     }
 }

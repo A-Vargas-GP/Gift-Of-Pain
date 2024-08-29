@@ -27,7 +27,7 @@ public class Child_Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Child's Health: " + child.currentHealth);
+        // Debug.Log("Child's Health: " + child.currentHealth);
 
         if (child.currentHealth <= 0)
         {
@@ -45,7 +45,7 @@ public class Child_Stats : MonoBehaviour
         if (collider.gameObject.tag == "Santa")
         {
             // takeDamage();
-            Debug.Log("SMASH SANTA");
+            // Debug.Log("SMASH SANTA");
         }
     }
 }
