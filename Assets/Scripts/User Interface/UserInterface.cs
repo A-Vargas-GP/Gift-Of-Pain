@@ -18,8 +18,8 @@ public class UserInterface : MonoBehaviour
     [Tooltip("References")]
     public TMP_Text timer;
     [SerializeField] private float time = 400.0f;
-    [SerializeField] private int minutes;
-    [SerializeField] private int timeRemaining;
+    private int minutes;
+    private int timeRemaining;
 
     [Header("UI Appearance - Inactive")]
     [Tooltip("References")]
@@ -53,7 +53,7 @@ public class UserInterface : MonoBehaviour
         time-=Time.deltaTime;
         minutes = (int)(time / 60);
         timeRemaining = (int)(time % 60);
-        timer.text = minutes + ":" + timeRemaining;
+        timer.text = minutes.ToString("00") + ":" + timeRemaining.ToString("00");
     }
 
     void AppearUI()
