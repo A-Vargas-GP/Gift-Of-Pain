@@ -22,6 +22,7 @@ public class MovementAI : MonoBehaviour
 
     private Rigidbody rb;
     public NavMeshAgent agent;
+    [SerializeField] private float initialStopping;
 
     [SerializeField] private Vector3 point;
 
@@ -35,6 +36,7 @@ public class MovementAI : MonoBehaviour
         agent = this.gameObject.GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Santa");
         floor = GameObject.FindWithTag("Floor");
+        initialStopping = agent.stoppingDistance;
     }
 
     // Start is called before the first frame update
@@ -50,21 +52,23 @@ public class MovementAI : MonoBehaviour
         gift = GameObject.FindWithTag("Gift");
         rb.constraints = RigidbodyConstraints.FreezePositionY;
 
-        // FollowSanta();
+        FollowSanta();
         Movement();
         DetectWalls();
     }
 
+    //Randomize movement based on floor area and NavMeshAgent flooring
     void Movement()
     {
         Vector3 currPos = this.transform.position;
 
-        Debug.Log(agent.pathStatus + ": Path Status");
+        // Debug.Log(agent.pathStatus + ": Path Status");
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             point = new Vector3((Random.Range(-rangeX,rangeX) + currPos.x), transform.position.y, (Random.Range(-rangeZ,rangeZ) + currPos.z));
             agent.SetDestination(point);
+            agent.stoppingDistance = initialStopping;
         }
         // Debug.Log("Point Value: " + point);
     }
@@ -73,17 +77,20 @@ public class MovementAI : MonoBehaviour
     void FollowSanta()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-
-        //TODO: Initiate the gift throwing aspect
-        //If within 5 units of distance of player, send child towards player
         
-        //if (distance <= obstacleRange && distance >= 1.5f)
         if (distance <= obstacleRange)
         {
-            // Debug.Log("FOLLOWING PLAYER");
             Vector3 santaPosition = new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
-            transform.LookAt(santaPosition);
-            transform.position = Vector3.Slerp(this.transform.position, santaPosition, Time.deltaTime/4.0f);
+            agent.SetDestination(santaPosition);
+            agent.stoppingDistance = 0.5f;
+            // Debug.Log("New Point Value: " + santaPosition);
+
+            /* Old - may be helpful if bugs appear
+                transform.LookAt(santaPosition);
+                transform.position = Vector3.Slerp(this.transform.position, santaPosition, Time.deltaTime/4.0f);
+
+            */
+
             // StartCoroutine(ThrowGift());
         }
     }
