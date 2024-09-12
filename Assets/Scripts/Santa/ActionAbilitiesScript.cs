@@ -26,7 +26,6 @@ public class ActionAbilitiesScript : MonoBehaviour
     private Enums.ObjectWeight objClass;
     private float objDmg;
     public RelativeMovement RelMove;
- 
 
 
     // [Header("Punching Ability")]

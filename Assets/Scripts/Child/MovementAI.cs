@@ -8,7 +8,7 @@ public class MovementAI : MonoBehaviour
     [Header("Child Movement Values")]
     [Tooltip("Generic Movement and Turning from Wall Values")]
     public float speed = 1.5f;
-    public float obstacleRange = 5.0f;
+    public float obstacleRange = 15.0f;
 
     [Header("Santa Object Selector")]
     [Tooltip("Choose the Object")]
@@ -42,8 +42,9 @@ public class MovementAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rangeX = floor.transform.localScale.x * 4.0f;
-        rangeZ = floor.transform.localScale.z * 4.0f;
+        rb.angularDrag = 0;
+        rangeX = -(floor.transform.position.x);
+        rangeZ = -(floor.transform.position.z);
     }
 
     // Update is called once per frame
@@ -82,7 +83,7 @@ public class MovementAI : MonoBehaviour
         {
             Vector3 santaPosition = new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
             agent.SetDestination(santaPosition);
-            agent.stoppingDistance = 0.5f;
+            agent.stoppingDistance = 0.75f;
             // Debug.Log("New Point Value: " + santaPosition);
 
             /* Old - may be helpful if bugs appear

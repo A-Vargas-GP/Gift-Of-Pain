@@ -12,11 +12,6 @@ public class Child_Stats : MonoBehaviour
     [Tooltip("Damage and health values of Santa")]
     public HealthScriptableObject santa;
 
-    [Header("Santa Health and Damage")]
-    [Tooltip("Damage and health values of Santa")]
-    public static int santaHealth;
-    public static int santaDamage;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +40,7 @@ public class Child_Stats : MonoBehaviour
         if (collider.gameObject.tag == "Santa")
         {
             // takeDamage();
-            // Debug.Log("SMASH SANTA");
+            Debug.Log("Running into Santa");
         }
     }
 }

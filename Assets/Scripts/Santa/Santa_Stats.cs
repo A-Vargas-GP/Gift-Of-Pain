@@ -16,7 +16,6 @@ public class Santa_Stats : MonoBehaviour
     [Tooltip("Damage and health values of Child")]
     public HealthScriptableObject child;
 
-    private Rigidbody santa_rb;
     private CharacterController charController;
 
     private ActionAbilitiesScript script;
@@ -28,7 +27,6 @@ public class Santa_Stats : MonoBehaviour
         santa.damageValue = 10;
         originalPosition = this.transform.position;
 
-        santa_rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
         script = this.GetComponent<ActionAbilitiesScript>();
     }
@@ -57,6 +55,30 @@ public class Santa_Stats : MonoBehaviour
         santa.currentHealth = 25;
     }
 
+    void OnCollisionEnter(Collision other)
+    {        
+        if ((other.gameObject.tag == "Child"))
+        {
+            if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Armature|Punch_R"))
+            {
+                // Debug.Log("Santa swung around child");
+            }
+            // Debug.Log("Santa is next to the child");
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if ((other.gameObject.tag == "Child"))
+        {
+            if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Armature|Punch_R"))
+            {
+                // Debug.Log("Santa punches through child");
+                child.currentHealth-=santa.damageValue;
+            }
+        }
+    }
+
     //public void OnCollisionEnter(Collision collider)
     /*
     public void OnControllerColliderHit(ControllerColliderHit collider)
@@ -68,18 +90,4 @@ public class Santa_Stats : MonoBehaviour
         }
     }
     */
-
-    //Below is used if CapsuleCollider child is set to be a trigger
-    void OnTriggerEnter(Collider other)
-    {        
-        if ((other.gameObject.tag == "Child"))
-        {
-            if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Armature|Punch_R"))
-            {
-                // Debug.Log("PUNCHING CHILD");
-            }
-
-            // Debug.Log("HAND SMACKS CHILD");
-        }
-    }
 }

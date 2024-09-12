@@ -125,6 +125,7 @@ public class RelativeMovement : MonoBehaviour
     {
         moveSpeed = baseSpeed;
     }
+    
     public void GameStart()
     { 
         
