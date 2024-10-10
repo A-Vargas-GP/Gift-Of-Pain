@@ -3706,6 +3706,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6628367591780759419, guid: dee12e1376f305046beef0c409a60b52, type: 3}
+      propertyPath: child
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628367591780759419, guid: dee12e1376f305046beef0c409a60b52, type: 3}
+      propertyPath: child_obj
+      value: 
+      objectReference: {fileID: 5042319102147781833, guid: e48a53bf2fb614797991a588ffb5a7d4, type: 3}
     - target: {fileID: 6662521811494817940, guid: dee12e1376f305046beef0c409a60b52, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3773,6 +3781,10 @@ PrefabInstance:
     - target: {fileID: 8045477357579879863, guid: dee12e1376f305046beef0c409a60b52, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045477357579879863, guid: dee12e1376f305046beef0c409a60b52, type: 3}
+      propertyPath: m_TagString
+      value: SantaHand
       objectReference: {fileID: 0}
     - target: {fileID: 8111885669437483479, guid: dee12e1376f305046beef0c409a60b52, type: 3}
       propertyPath: m_Layer

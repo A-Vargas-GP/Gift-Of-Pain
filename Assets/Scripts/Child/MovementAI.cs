@@ -112,9 +112,11 @@ public class MovementAI : MonoBehaviour
         }
     }
 
-    //Child begins to throw gift forward
+    //Child begins to throw gift forward - pairs w/ SceneController GiftSpawn();
     private IEnumerator ThrowGift()
     {
+        Debug.Log("Initiating Gift");
+
         if (gift == null)
         {
             gift = Instantiate(giftPrefab) as GameObject;

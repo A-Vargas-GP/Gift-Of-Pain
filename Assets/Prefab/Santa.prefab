@@ -1207,7 +1207,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6662521811494817940}
   - component: {fileID: 762837444672162542}
-  - component: {fileID: 6628367591217475633}
   - component: {fileID: 6628367591780759417}
   - component: {fileID: 6628367591780759418}
   - component: {fileID: 6628367591780759419}
@@ -1267,22 +1266,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &6628367591217475633
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6286419133487680046}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!143 &6628367591780759417
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1329,7 +1312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   santa: {fileID: 11400000, guid: 7bb16c2ad80c34a95a1616c7e27affa1, type: 2}
   originalPosition: {x: 0, y: 0, z: 0}
-  child: {fileID: 11400000, guid: 5c7c8ff0cf65943eebf5177371c2832d, type: 2}
+  child: {fileID: 11400000, guid: 160b4fd3fba85486ea26d6d83cd0ac2d, type: 2}
 --- !u!114 &6628367591780759412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1362,6 +1345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   santaAnimator: {fileID: 762837444672162542}
+  canMove: 0
   baseSpeed: 4.5
   jumpSpeed: 15
   gravity: -9.8

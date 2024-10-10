@@ -11,15 +11,16 @@ public class UserInterface : MonoBehaviour
     public GameObject camera;
     private OrbitCamera camScript;
 
-    [Tooltip("Spawning Reference")]
-    public GameObject spawner;
-
     [Header("Timer - UI Appearance (Active)")]
     [Tooltip("References")]
     public TMP_Text timer;
     [SerializeField] private float time = 400.0f;
     private int minutes;
     private int timeRemaining;
+
+    [Header("Child Counter - UI Appearance (Active)")]
+    [Tooltip("References")]
+    public TMP_Text childCount;
 
     [Header("UI Appearance - Inactive")]
     [Tooltip("References")]
@@ -41,6 +42,7 @@ public class UserInterface : MonoBehaviour
     {
         TurnOnEscape();
         timerText();
+        counterText();
     }
 
     void timerText()
@@ -54,6 +56,18 @@ public class UserInterface : MonoBehaviour
         minutes = (int)(time / 60);
         timeRemaining = (int)(time % 60);
         timer.text = minutes.ToString("00") + ":" + timeRemaining.ToString("00");
+    }
+
+    void counterText()
+    {
+        if (Child_Stats.destroyedChildTotal == 1)
+        {
+            childCount.text = Child_Stats.destroyedChildTotal + " Child Terminated";
+        }
+        else
+        {
+            childCount.text = Child_Stats.destroyedChildTotal + " Children Terminated";
+        }
     }
 
     void AppearUI()

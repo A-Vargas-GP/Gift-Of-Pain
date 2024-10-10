@@ -4,43 +4,89 @@ using UnityEngine;
 
 public class Child_Stats : MonoBehaviour
 {
-    [Header("Child Scriptable Object Script")]
-    [Tooltip("Damage and health values of Child")]
-    public HealthScriptableObject child;
-
     [Header("Santa Scriptable Object Script")]
     [Tooltip("Damage and health values of Santa")]
     public HealthScriptableObject santa;
+    public GameObject santaObj;
+    private Santa_Stats santaRef;
+
+    [Header("Child Health Value")]
+    [Tooltip("Health values of Child")]
+    public EnemyDamageScriptableObject childObj;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private GameObject child;
+    public static int destroyedChildTotal = 0;
+
+    void Awake()
+    {
+        currentHealth = 3;
+        santaObj = GameObject.FindWithTag("Santa");
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        child.currentHealth = 3;
-        child.damageValue = 2;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("Child's Health: " + child.currentHealth);
-
-        if (child.currentHealth <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+        // Debug.Log("Child's Health: " + currentHealth);
+        Die();
     }
 
     public void takeDamage()
     {
-        child.currentHealth-=santa.damageValue;
+        currentHealth-=santa.damageValue;
     }
 
-    public void OnCollisionEnter(Collision collider)
-    {        
-        if (collider.gameObject.tag == "Santa")
+    public void Die()
+    {
+        if (currentHealth <= 0)
         {
-            // takeDamage();
-            Debug.Log("Running into Santa");
+            Destroy(child);
+            destroyedChildTotal++;
         }
     }
+
+    public int returnHealth()
+    {
+        return currentHealth;
+    }
+
+    public void DestroySelf(GameObject self)
+    {        
+        child = self;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {        
+        if (other.gameObject.tag == "SantaHand")
+        {
+            // Debug.Log("Recognizing hand");
+            if(santaObj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Armature|Punch_R"))
+            {
+                // Debug.Log("Recognizing punching motion");
+                takeDamage();
+            }
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "SantaHand")
+        {
+            Debug.Log("Recognizing leaving hand");
+        }
+    }
+
+    // public void OnCollisionEnter(Collision collider)
+    // {        
+    //     if (collider.gameObject.tag == "Santa")
+    //     {
+    //         // takeDamage();
+    //         Debug.Log("Running into Santa");
+    //     }
+    // }
 }

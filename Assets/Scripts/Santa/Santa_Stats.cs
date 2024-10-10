@@ -14,11 +14,17 @@ public class Santa_Stats : MonoBehaviour
 
     [Header("Child Scriptable Object Script")]
     [Tooltip("Damage and health values of Child")]
-    public HealthScriptableObject child;
+    public EnemyDamageScriptableObject child;
 
     private CharacterController charController;
 
     private ActionAbilitiesScript script;
+
+    void Awake()
+    {
+        charController = GetComponent<CharacterController>();
+        script = this.GetComponent<ActionAbilitiesScript>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +32,6 @@ public class Santa_Stats : MonoBehaviour
         santa.currentHealth = 100;
         santa.damageValue = 10;
         originalPosition = this.transform.position;
-
-        charController = GetComponent<CharacterController>();
-        script = this.GetComponent<ActionAbilitiesScript>();
     }
 
     // Update is called once per frame
@@ -73,13 +76,12 @@ public class Santa_Stats : MonoBehaviour
         {
             if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Armature|Punch_R"))
             {
-                // Debug.Log("Santa punches through child");
-                child.currentHealth-=santa.damageValue;
+                Destroy(other.gameObject);
+                // Debug.Log("Santa punches through child"); 
             }
         }
     }
 
-    //public void OnCollisionEnter(Collision collider)
     /*
     public void OnControllerColliderHit(ControllerColliderHit collider)
     {

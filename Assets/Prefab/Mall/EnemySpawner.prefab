@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 1599798411}
   - component: {fileID: 1599798410}
   - component: {fileID: 1599798409}
-  - component: {fileID: 1599798412}
-  - component: {fileID: 1599798408}
   m_Layer: 0
   m_Name: Enemy_Spawn
   m_TagString: Untagged
@@ -85,39 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1599798412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599798407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e95bb85bed42457aa321f2732b025c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  childPrefab: {fileID: 5042319102147781833, guid: e48a53bf2fb614797991a588ffb5a7d4, type: 3}
-  enableSpawn: 1
-  user_interface: {fileID: 11400000, guid: 2aa8207fb62a2490597c1cb8138813fb, type: 2}
-  giftTextures:
-  - {fileID: 2800000, guid: 099d4ecd87bed3e4ca11a4df6e8b9a87, type: 3}
-  - {fileID: 2800000, guid: fc1018f61777d624891b206597164c7b, type: 3}
-  - {fileID: 2800000, guid: 78cce6764d53a404fa86529d7dc4cf48, type: 3}
-  giftPrefab: {fileID: 7647608024268552597, guid: 28c847f326dfcfb4aa629f8bacf35562, type: 3}
---- !u!65 &1599798408
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599798407}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1988504066346654919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,10 +148,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 24538f153435643ed899ec0f48367d47, type: 3}
       propertyPath: m_Name
-      value: door_with_frame
+      value: EnemySpawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24538f153435643ed899ec0f48367d47, type: 3}
+--- !u!1 &1682653254473621910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 24538f153435643ed899ec0f48367d47, type: 3}
+  m_PrefabInstance: {fileID: 1988504066346654919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4489798126810590458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682653254473621910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e95bb85bed42457aa321f2732b025c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childPrefab: {fileID: 5042319102147781833, guid: e48a53bf2fb614797991a588ffb5a7d4, type: 3}
+  child: {fileID: 0}
+  child_transform: {fileID: 0}
+  childRef: {fileID: 0}
+  enableSpawn: 1
+  user_interface: {fileID: 11400000, guid: 2aa8207fb62a2490597c1cb8138813fb, type: 2}
+  giftTextures:
+  - {fileID: 2800000, guid: 099d4ecd87bed3e4ca11a4df6e8b9a87, type: 3}
+  - {fileID: 2800000, guid: fc1018f61777d624891b206597164c7b, type: 3}
+  - {fileID: 2800000, guid: 78cce6764d53a404fa86529d7dc4cf48, type: 3}
+  giftPrefab: {fileID: 7647608024268552597, guid: 28c847f326dfcfb4aa629f8bacf35562, type: 3}
+--- !u!65 &4405659107862276601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682653254473621910}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1624379, y: 0.10575691, z: 0.010693057}
+  m_Center: {x: -0.0031589488, y: 0.052899357, z: -0.0000420264}
 --- !u!4 &2022728200362031916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 24538f153435643ed899ec0f48367d47, type: 3}
