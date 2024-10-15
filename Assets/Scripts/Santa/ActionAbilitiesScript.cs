@@ -9,6 +9,8 @@ public class ActionAbilitiesScript : MonoBehaviour
     public GameObject Santa31;
     public Transform holdPos;
     public Animator santaAnimator;
+    public CapsuleCollider PunchHitboxL;
+    public CapsuleCollider PunchHitboxR;
 
     [Header("Holding Ability")]
     [Tooltip("Holding Positions")]
@@ -28,6 +30,7 @@ public class ActionAbilitiesScript : MonoBehaviour
     public RelativeMovement RelMove;
 
 
+
     // [Header("Punching Ability")]
     // [Tooltip("Punching Positions")]
 
@@ -37,7 +40,7 @@ public class ActionAbilitiesScript : MonoBehaviour
     //MouseLookScript mouseLookScript;
     void Start()
     {
-    
+        PunchHitboxL.enabled = false;
         //mouseLookScript = player.GetComponent<MouseLookScript>();
     }
 
@@ -48,6 +51,16 @@ public class ActionAbilitiesScript : MonoBehaviour
 
         PickAndThrowKeyBinds();
         PunchKeyBind();
+        if (santaAnimator.GetCurrentAnimatorStateInfo(1).IsName("Armature|Punch_R"))
+        {
+           // PunchHitboxL.enabled = true;
+            PunchHitboxR.enabled = true;
+        }
+        else
+        {
+            //PunchHitboxL.enabled = false;
+            PunchHitboxR.enabled = false;
+        }
     }
 
     void PunchKeyBind()

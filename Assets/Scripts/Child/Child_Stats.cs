@@ -64,12 +64,13 @@ public class Child_Stats : MonoBehaviour
     {        
         if (other.gameObject.tag == "SantaHand")
         {
+            takeDamage();
             // Debug.Log("Recognizing hand");
-            if(santaObj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Armature|Punch_R"))
+            /*if(santaObj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Armature|Punch_R"))
             {
                 // Debug.Log("Recognizing punching motion");
                 takeDamage();
-            }
+            }*/
         }
     }
 
