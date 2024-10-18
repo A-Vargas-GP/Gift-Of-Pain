@@ -11,12 +11,20 @@ public class UserInterface : MonoBehaviour
     public GameObject camera;
     private OrbitCamera camScript;
 
-    [Header("Timer - UI Appearance (Active)")]
+    [Header("Health Bar - UI Appearance (Active)")]
     [Tooltip("References")]
     public TMP_Text timer;
     [SerializeField] private float time = 400.0f;
     private int minutes;
     private int timeRemaining;
+
+    [Header("Timer - UI Appearance (Active)")]
+    [Tooltip("References")]
+    public HealthScriptableObject santa_scriptable_obj;
+    public TMP_Text healthTxt;
+    public RectTransform healthBar;
+    [SerializeField] private float healthBarWidth;
+    private float healthBarHeight;
 
     [Header("Child Counter - UI Appearance (Active)")]
     [Tooltip("References")]
@@ -35,14 +43,32 @@ public class UserInterface : MonoBehaviour
     void Start()
     {
         camScript = camera.GetComponent<OrbitCamera>();
+        healthBarWidth = healthBar.rect.width;
+        healthBarHeight = healthBar.rect.height;
     }
 
     // Update is called once per frame
     void Update()
     {
         TurnOnEscape();
+        healthUI();
         timerText();
         counterText();
+    }
+
+    //TODO: Tie this to Santa's health
+    void healthUI()
+    {
+        if (healthBarWidth <= 0)
+        {
+            healthBarWidth = 0;
+        }
+        else
+        {
+            healthBarWidth -=2;
+        }
+
+        healthBar.sizeDelta = new Vector2(healthBarWidth, healthBarHeight);
     }
 
     void timerText()

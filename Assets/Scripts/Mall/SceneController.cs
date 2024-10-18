@@ -57,6 +57,7 @@ public class SceneController : MonoBehaviour
             child.transform.position = this.transform.position + new Vector3(2, -1, 0);
             float angle = Random.Range(0, 180);
             child.transform.Rotate(0, angle, 0);
+            // GiftSpawn();
         }
     }
 
@@ -71,8 +72,6 @@ public class SceneController : MonoBehaviour
 
     void GiftSpawn()
     {
-        // Debug.Log("spawning");
-
         giftMesh = giftPrefab.GetComponent<Renderer>();
         int listNum = Random.Range(0, giftTextures.Count);
         giftMesh.sharedMaterial.SetTexture("_BaseColorMap", giftTextures[listNum]);  
