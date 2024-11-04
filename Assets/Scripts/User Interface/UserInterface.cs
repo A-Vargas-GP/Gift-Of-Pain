@@ -11,14 +11,14 @@ public class UserInterface : MonoBehaviour
     public GameObject camera;
     private OrbitCamera camScript;
 
-    [Header("Health Bar - UI Appearance (Active)")]
+    [Header("Timer - UI Appearance (Active)")]
     [Tooltip("References")]
     public TMP_Text timer;
     [SerializeField] private float time = 400.0f;
     private int minutes;
     private int timeRemaining;
 
-    [Header("Timer - UI Appearance (Active)")]
+    [Header("Health Bar - UI Appearance (Active)")]
     [Tooltip("References")]
     public HealthScriptableObject santa_scriptable_obj;
     public TMP_Text healthTxt;
